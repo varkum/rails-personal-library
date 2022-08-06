@@ -13,9 +13,19 @@
 
   <body class="h-screen">
     
-      <%= render partial: "shared/navbar" %>
-      <div class="flex h-5/6">
+      
+        <%= render partial: "shared/navbar" %>
+      
+          <div class="flex justify-center mt-20">
+          <%= render partial: "shared/flash" %>
+        </div>
+        
+      
+      
+      <div class="flex-grow lg:flex h-1/2">
+        
         <%= yield %>
       </div>
+      
   </body>
 </html>
