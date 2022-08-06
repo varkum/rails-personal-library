@@ -2,6 +2,7 @@
 
 
 <%= form_with(model: @user, url: signup_path, class: "w-96") do |form|%>
+  
     <div>
        <%= form.label :name, class: "block text-gray-700 text-lg font-medium" %>
        <%= form.text_field :name, class: "w-full rounded mb-4 border-1", placeholder: "Name"%>

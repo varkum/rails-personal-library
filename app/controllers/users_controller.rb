@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
     #GET /profile
     def index
-
+        require_user_logged_in!
+        @user = Current.user
     end
 
     #GET /signup
@@ -12,23 +13,25 @@ class UsersController < ApplicationController
 
     #GET /profile/edit
     def edit 
-
+        require_user_logged_in!
     end
 
     #POST /signup
     def create
+        
         @user = User.new(user_params)
         if @user.save!
-            redirect_to home_path
+            redirect_to home_path, notice: "Your account was successfully created. Begin by adding items to a list."
         else
-            render plain: "An error occured. Please try again"
+            render :new
+            flash[:alert] = "An error occured. Please try again."
            
         end
     end
 
     #PATCH/PUT /profile/edit
     def update
-
+        require_user_logged_in!
     end
 
     private 
