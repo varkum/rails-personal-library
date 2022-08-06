@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'signup', to: "users#new"
   post 'signup', to: "users#create"
   get 'account', to: "users#index"
-  get 'edit_password', to:"users#edit"
+  get 'account/edit', to:"users#edit"
+  patch 'account/edit', to: "users#update", as: :update_password
 
   get "home", to: "items#index"
   # Defines the root path route ("/")

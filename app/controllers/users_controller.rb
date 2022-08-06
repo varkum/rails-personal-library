@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
 
-    #GET /profile
+    #GET /account
     def index
         require_user_logged_in!
         @user = Current.user
@@ -11,9 +11,10 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    #GET /profile/edit
+    #GET /account/edit
     def edit 
         require_user_logged_in!
+        @user = Current.user
     end
 
     #POST /signup
@@ -29,9 +30,15 @@ class UsersController < ApplicationController
         end
     end
 
-    #PATCH/PUT /profile/edit
+    #PATCH/PUT /account/edit
     def update
         require_user_logged_in!
+        @user = Current.user
+        if @user.update(user_params)
+            redirect_to account_path, notice: "Your password was successfully changed"
+        else
+            redirect_to account_edit_path, alert: "An error occurred. Please try again."
+        end
     end
 
     private 
