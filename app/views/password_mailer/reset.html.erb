@@ -1,0 +1,6 @@
+Hi <%= params[:user].name %>
+
+Someone requested a reset of your password for your Personal Library account. If this was you, click the link below to reset your password. The link expires in 15 minutes.
+
+<%= link_to "Reset Password", reset_password_edit_url(token: @token) %>
+

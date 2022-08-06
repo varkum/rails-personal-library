@@ -1,0 +1,20 @@
+<div class="flex flex-col mt-6 ml-4">
+    <h1 class="font-semibold text-2xl">Reset your Password</h1>
+    <%= form_with(model: @user, url: reset_password_edit_path(token: params[:token]), class: "mt-5 w-96") do |form|%>
+    <div>
+        <%= form.label :password, class: "block text-gray-700 text-lg font-medium" %>
+        <%= form.password_field :password, class: "w-full rounded mb-4 border-1", placeholder: "*********"%>
+    </div>
+
+    <div class="mb-8">
+        <%= form.label :password_confirmation, class: "block text-gray-700 font-bold text-lg font-medium" %>
+        <%= form.password_field :password_confirmation, placeholder: "**********", class: "w-full rounded border-1" %>
+        
+    </div>
+
+     <div class="w-48">
+     <%= form.submit "Reset Password", class: "w-full text-white bg-green-700 p-3 rounded font-semibold cursor-pointer hover:opacity-70" %>
+     
+    </div>
+    <% end %>
+</div>

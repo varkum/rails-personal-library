@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     def edit 
         require_user_logged_in!
         @user = Current.user
+       
     end
 
     #POST /signup
@@ -46,6 +47,8 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+
+   
 
 
 end

@@ -1,0 +1,14 @@
+<div class="flex m-auto">
+    <%= form_with(url: reset_password_path, class: "mt-5 w-96") do |form|%>
+    <div>
+        <%= form.label :email, class: "block text-gray-700 text-lg font-medium" %>
+        <%= form.text_field :email, class: "w-full rounded mb-4 border-1", placeholder: "Email" %>
+    </div>
+
+
+     <div>
+     <%= form.submit "Send reset link", class: "w-full text-white bg-green-700 p-3 rounded font-semibold cursor-pointer hover:opacity-70" %>
+     
+    </div>
+    <% end %>
+</div>
