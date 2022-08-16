@@ -4,30 +4,41 @@
   <% end %>
 
   <div class="flex items-center">
-    <h1 class="font-bold text-4xl">Books</h1>
+    <h1 class="font-bold text-4xl m-auto mt-3">Books</h1>
     
   </div>
-  <%= link_to 'New book', new_book_path, class: "w-32 rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
 
-  <div id="books" class=" w-1/2 mt-6 mx-auto">
-    
-     <div class="flex border-b-2 border-b-gray-500">
-          <span class="pb-5">Title</span>
-          <span class="pb-5">Author</span>
-          <span class="pb-5">Read</span>
-          <span class="pb-5">Starred</span>
-    </div>
+  <div class="w-1/2 mx-auto mt-12">
+    <%= link_to 'Add book', new_book_path, class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
+  </div>
+  
+  <div id="books" class="grid grid-cols-5 w-1/2 mt-6 mx-auto">
+      <div class="border-t-2 border-gray-300">
+        <span class="font-bold text-xl">Date Added</span>
+      </div>
+     <div class="border-t-2 border-gray-300">
+        <span class="font-bold text-xl">Title</span>
+      </div>
+      <div class="border-t-2 border-gray-300"> 
+        <span class="font-bold text-xl">Author</span>
+      </div>
+      <div class="border-t-2 border-gray-300">
+        <span class="font-bold text-xl">Read?</span>
+      </div>
+      <div class="border-t-2 border-gray-300">
+        <span class="font-bold text-xl">Starred?</span>
+      </div>
+          
+          
+      <%= render @books %>
       
         <% @books.each do |book|%>
-          <div class="flex border-2 border-gray-300 rounded-xl">
-            <span class="pb-4 "><%=book.title%></td>
-            <span class="pb-4 "><%=book.author%></td>
-            <span class="pb-4 "><%=book.consumed%></td>
-            <span class="pb-4 "><%=book.starred%></td>
-          </div>
+        
+          
         <% end %>
       
     
     
   </div>
+  
 </div>

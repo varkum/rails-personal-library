@@ -1,32 +1,15 @@
-<div id="<%= dom_id book %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= book.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Author:</strong>
-    <%= book.author %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= book.notes %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Starred:</strong>
-    <%= book.starred %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Consumed:</strong>
-    <%= book.consumed %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this book", book, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this book', edit_book_path(book), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+  <div class="py-3 border-t-2 border-gray-300">
+            <span><%=book.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          </div>
+          <div class="py-3 border-t-2 border-gray-300">
+            <span><%=book.title%></span>
+          </div>
+          <div class="py-3 pr-3 border-t-2 border-gray-300">
+            <span><%=book.author%></span>
+          </div>
+          <div class="py-3 border-t-2 border-gray-300">
+            <span ><%=book.consumed%></span>
+          </div>
+          <div class="py-3 border-t-2 border-gray-300">
+            <span><%=book.starred%></span>
+  </div>
