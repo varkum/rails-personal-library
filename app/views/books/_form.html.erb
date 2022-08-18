@@ -13,17 +13,17 @@
 
   <div class="my-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :author %>
-    <%= form.text_field :author, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :author, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :notes %>
-    <%= form.text_area :notes, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :notes, rows: 4, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -33,10 +33,18 @@
 
   <div class="my-5">
     <%= form.label "Read?" %>
-    <%= form.check_box :consumed, class: "block mt-2 h-5 w-5" %>
+    <%= form.check_box :consumed, disabled: viewing, class: "block mt-2 h-5 w-5" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit "Add book", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <% unless viewing %>
+  <% if source == 'new' %>
+     <div class="inline">
+        <%= form.submit "Add book", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+  <% elsif source == 'edit' %>
+      <div class="inline">
+        <%= form.submit "Confirm", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+  <% end %>
+  <% end %>
 <% end %>

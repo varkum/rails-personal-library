@@ -1,15 +1,18 @@
-  <div class="py-3 border-t-2 border-gray-300">
+ 
+
+          <%= link_to book_path(book.id), class: "py-3 border-t-2 border-gray-300" do %>
             <span><%=book.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
-          </div>
-          <div class="py-3 border-t-2 border-gray-300">
+          <% end %>
+          <%= link_to book_path(book.id), class: "pr-3 py-3 border-t-2 border-gray-300" do %>
             <span><%=book.title%></span>
-          </div>
-          <div class="py-3 pr-3 border-t-2 border-gray-300">
+          <% end %>
+          <%= link_to book_path(book.id), class: "pr-3 py-3 border-t-2 border-gray-300" do %>
             <span><%=book.author%></span>
-          </div>
-          <div class="py-3 border-t-2 border-gray-300">
+          <% end %>
+         <%= link_to book_path(book.id), class: "py-3 border-t-2 border-gray-300" do %>
             <span ><%=book.consumed%></span>
-          </div>
-          <div class="py-3 border-t-2 border-gray-300">
-            <span><%=book.starred%></span>
-  </div>
+          <% end %>
+          <%= link_to book_path(book.id), class: "py-3 border-t-2 border-gray-300" do %>
+            <span><%=book.starred%></span> 
+          <% end %>
+  
