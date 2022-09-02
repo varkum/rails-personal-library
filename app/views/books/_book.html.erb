@@ -14,10 +14,15 @@
             <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()' }%>
             <% end %>
           
-         
-            <%= link_to book_path(book.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <i class="fa-regular fa-lg fa-star"></i>
-          <% end %>
- 
+            <%= button_to book_path(book.id, book: {starred: true}), method: :patch, class: "py-3 border-t-2 border-gray-300" do %>
+              <% if book.starred %>
+                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+              <% else %>
+                <i class="fa-regular fa-star fa-lg"></i>
+              <% end %>
+            <% end %>
+              
+            
+            
 <% end %>
   
