@@ -21,6 +21,8 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
+gem "hotwire-rails"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
@@ -74,3 +76,5 @@ end
 gem "bcrypt", "~> 3.1"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem 'pry', '~> 0.13.1'
