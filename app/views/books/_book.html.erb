@@ -1,24 +1,23 @@
-<%= turbo_frame_tag book, class: "contents" do%>
-
+<%= turbo_frame_tag book, class: "contents" do %>
        
-          <%= link_to book_path(book.id), class: "py-3 border-t-2 border-gray-300" do %>
+          <%= link_to book_path(book.id), target: "_top", class: "py-3 border-t-2 border-gray-300", target: "_top" do %>
             <span><%=book.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to book_path(book.id), class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+          <%= link_to book_path(book.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
             <span><%=book.title%></span>
           <% end %>
-          <%= link_to book_path(book.id), class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+          <%= link_to book_path(book.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
             <span><%=book.author%></span>
           <% end %>
           
             <%= form_with(model: book, class: "py-3 border-t-2 border-gray-300") do |form| %>
-            <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.submit()' }%>
+            <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()' }%>
             <% end %>
           
          
-            <%= link_to book_path(book.id), class: "py-3 border-t-2 border-gray-300" do %>
+            <%= link_to book_path(book.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
             <i class="fa-regular fa-lg fa-star"></i>
           <% end %>
  
-  <% end %>
+<% end %>
   

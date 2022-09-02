@@ -39,7 +39,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-          format.turbo_stream { render turbo_stream: turbo_stream.remove(@book) }
+          format.turbo_stream 
           format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
           format.json { render :show, status: :ok, location: @book }
          
