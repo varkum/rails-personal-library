@@ -4,7 +4,19 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
+    
     @books = Current.user.books.all
+    @books = @books.where(consumed: params[:show_consumed]) if params[:show_consumed].present?
+    @books = @books.where(starred: params[:show_starred]) if params[:show_starred].present?
+
+    
+  end
+
+  # GET /books/filter
+  def filter
+    @books = Current.user.books.where(consumed: params[:show_consumed]) if params[:show_consumed].present?
+    @books = Current.user.books.where(starred: params[:show_starred]) if params[:show_starred].present?
+    render :index
   end
 
   # GET /books/1 or /books/1.json
@@ -71,4 +83,6 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :author, :notes, :starred, :consumed)
     end
+
+    
 end

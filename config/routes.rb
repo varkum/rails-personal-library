@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :movies
-  resources :books
+  resources :books do
+    collection do
+      get 'filter'
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'signin', to: "sessions#index"
   post 'signin', to: "sessions#create"
