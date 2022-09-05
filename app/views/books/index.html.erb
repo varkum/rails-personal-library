@@ -18,7 +18,13 @@
    <% end %>
 </div>
 
-  <%= turbo_frame_tag "books", class: "contents" do %>
+  
+
+    <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
+      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()"} %>
+    <% end %>
+
+    <%= turbo_frame_tag "books", class: "contents" do %>
 
     <%= link_to "show starred", filter_books_path(show_starred: true) %>
   
