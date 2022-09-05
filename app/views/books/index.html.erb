@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "books", class: "contents" do %>
+
 <div class="w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
@@ -10,13 +10,20 @@
   </div>
 
   <div class="w-1/2 mx-auto mt-12">
-    <%= link_to 'Add book', new_book_path, class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
+    <%= link_to 'Add book', new_book_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
    <div class="w-1/2 mx-auto mt-12">
+   <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
+      <%= form.text_field :search, placeholder: "Search...", data: {action: "input->search-form#search"} %>
+   <% end %>
+</div>
+
+  <%= turbo_frame_tag "books", class: "contents" do %>
+
     <%= link_to "show starred", filter_books_path(show_starred: true) %>
-  </div>
+  
    <div class="w-1/2 mx-auto mt-12">
-    <%= link_to 'Show consumed', books_path(consumed: true), class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
+    <%= link_to 'Show consumed', filter_books_path(show_consumed: true), class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
   <div id="books" class="grid grid-cols-5 w-1/2 mt-6 mx-auto">
    
@@ -35,14 +42,10 @@
      <div class="border-t-2 border-gray-300 py-2">
         
       </div>
-          
-      
         <%= render @books %>
-      
     
-    
-  </div>
-  
+      </div>
+  <% end %>
 </div>
 
-<% end %>
+

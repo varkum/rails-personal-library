@@ -14,6 +14,7 @@ class BooksController < ApplicationController
 
   # GET /books/filter
   def filter
+    @books = Current.user.books.where("title like ?", "%#{params[:search]}%").or(Current.user.books.where("author like ?", "%#{params[:search]}%")) if params[:search]
     @books = Current.user.books.where(consumed: params[:show_consumed]) if params[:show_consumed].present?
     @books = Current.user.books.where(starred: params[:show_starred]) if params[:show_starred].present?
     render :index
