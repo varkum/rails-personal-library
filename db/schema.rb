@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_142655) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_191055) do
+  create_table "articles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title"
+    t.string "author"
+    t.text "notes"
+    t.string "url"
+    t.boolean "consumed"
+    t.boolean "starred"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
@@ -42,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_142655) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "books", "users"
   add_foreign_key "movies", "users"
 end

@@ -1,0 +1,30 @@
+<%= turbo_frame_tag article, class: "contents" do %>
+       
+          <%= link_to article_path(article.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
+            <span><%=article.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <% end %>
+          <%= link_to article_path(article.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span><%=article.title%></span>
+          <% end %>
+          <%= link_to article_path(article.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span><%=article.author%></span>
+          <% end %>
+          <%= link_to article.url, target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
+            <span><%=truncate(article.url, length: 18)%></span>
+          <% end %>
+            <%= form_with(model: article, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form.check_box :consumed, { value: !article.consumed, onchange: 'this.form.requestSubmit()' }%>
+            <% end %>
+          
+            <%= button_to article_path(article.id, article: {starred: !article.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
+              <% if article.starred %>
+                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+              <% else %>
+                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+              <% end %>
+            <% end %>
+              
+            
+            
+<% end %>
+  
