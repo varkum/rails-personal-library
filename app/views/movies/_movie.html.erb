@@ -1,32 +1,23 @@
-<div id="<%= dom_id movie %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= movie.user_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= movie.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= movie.notes %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Starred:</strong>
-    <%= movie.starred %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Consumed:</strong>
-    <%= movie.consumed %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this movie", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this movie', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<%= turbo_frame_tag movie, class: "contents" do %>
+       
+          <%= link_to movie_path(movie.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
+            <span><%=movie.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <% end %>
+          <%= link_to movie_path(movie.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span><%=movie.name%></span>
+          <% end %>
+        
+            <%= form_with(model: movie, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form.check_box :consumed, { value: !movie.consumed, onchange: 'this.form.requestSubmit()' }%>
+            <% end %>
+          
+            <%= button_to movie_path(movie.id, movie: {starred: !movie.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
+              <% if movie.starred %>
+                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+              <% else %>
+                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+              <% end %>
+            <% end %>
+              
+<% end %>
+  

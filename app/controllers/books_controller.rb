@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     session['filters'].merge!(filter_params)
     
     @books = Current.user.books.all
-    @books = @books.where("title like ?", "%#{session['filters']['search']}%").or(Current.user.books.where("author like ?", "%#{session['filters']['search']}%")) if session['filters']['search']
+    @books = @books.where("title like ?", "%#{session['filters']['search']}%").or(@books.where("author like ?", "%#{session['filters']['search']}%")) if session['filters']['search']
     @books = @books.where(consumed: session['filters']['show_consumed']) if session['filters']['show_consumed'].present?
     @books = @books.where(starred: session['filters']['show_starred']) if session['filters']['show_starred'].present?
     

@@ -1,11 +1,25 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :require_user_logged_in!
 
   # GET /movies or /movies.json
   def index
+    session['filters'] = {}
     @movies = Current.user.movies.all
   end
 
+  def filter
+    session['filters'] = {} if session['filters'].blank?
+    session['filters'].merge!(filter_params)
+
+    @movies = Current.user.movies.all
+    @movies = @movies.where("name like ?", "%#{session['filters']['search']}%") if session['filters']['search']
+    @movies = @movies.where(consumed: session['filters']['show_consumed']) if session['filters']['show_consumed'].present?
+    @movies = @movies.where(starred: session['filters']['show_starred']) if session['filters']['show_starred'].present?
+
+    render :index
+
+  end
   # GET /movies/1 or /movies/1.json
   def show
   end
@@ -25,7 +39,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+        format.html { redirect_to movies_url }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,6 +52,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
+        format.turbo_stream
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
       else
@@ -52,7 +67,7 @@ class MoviesController < ApplicationController
     @movie.destroy
 
     respond_to do |format|
-      format.html { redirect_to movies_url, notice: "Movie was successfully destroyed." }
+      format.html { redirect_to movies_url, notice: "Movie was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -66,5 +81,9 @@ class MoviesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def movie_params
       params.require(:movie).permit(:name, :notes, :starred, :consumed)
+    end
+
+    def filter_params
+      params.permit(:search, :show_consumed, :show_starred)
     end
 end

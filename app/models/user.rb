@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :books
+    has_many :movies
     validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address"}
     validates_presence_of :name
     validates_presence_of :password
