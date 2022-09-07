@@ -9,25 +9,28 @@
     
   </div>
 
-  <div class="w-1/2 mx-auto mt-12">
+  <div class="w-1/2 mx-auto mt-10">
     <%= link_to 'Add book', new_book_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
-   <div class="w-1/2 mx-auto mt-12">
-   <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
-      <%= form.text_field :search, placeholder: "Search...", data: {action: "input->search-form#search"} %>
-   <% end %>
-</div>
 
+  <div class="flex w-1/2 mx-auto mt-6">
   
-
-    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
-      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()"} %>
+  
+   <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
+      
+      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
+   <% end %>
+ 
+    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"}, class: "mr-4" do |form| %>
+      <%= form.label "Starred:" %>
+      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
     <% end %>
 
     <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
-      <%= form.select :show_consumed, [["All", nil], ["Read Only", 1], ["Unread Only", 0]], {}, {onchange: "this.form.requestSubmit()"} %>
+      <%= form.label "Read:" %>
+      <%= form.select :show_consumed, [["All", nil], ["Read Only", 1], ["Unread Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
     <% end %>
-
+</div>
   <%= turbo_frame_tag "books", class: "contents" do %>
   <div id="books" class="grid grid-cols-5 w-1/2 mt-6 mx-auto">
    
