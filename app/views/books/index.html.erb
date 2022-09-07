@@ -20,17 +20,15 @@
 
   
 
-    <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
+    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
       <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()"} %>
     <% end %>
 
-    <%= turbo_frame_tag "books", class: "contents" do %>
+    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
+      <%= form.select :show_consumed, [["All", nil], ["Read Only", 1], ["Unread Only", 0]], {}, {onchange: "this.form.requestSubmit()"} %>
+    <% end %>
 
-    <%= link_to "show starred", filter_books_path(show_starred: true) %>
-  
-   <div class="w-1/2 mx-auto mt-12">
-    <%= link_to 'Show consumed', filter_books_path(show_consumed: true), class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
-  </div>
+  <%= turbo_frame_tag "books", class: "contents" do %>
   <div id="books" class="grid grid-cols-5 w-1/2 mt-6 mx-auto">
    
       <div class="border-t-2 border-gray-300 py-2">
