@@ -9,28 +9,30 @@
     
   </div>
 
-  <div class="w-1/2 mx-auto mt-10">
+  <div class="w-2/3 mx-auto mt-10">
     <%= link_to 'Add movie', new_movie_path, class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
 
-  <div class="flex justify-between mx-auto w-1/2 mt-6">
+   <div class="flex w-2/3 mx-auto mt-6">
   
-   <%= form_with url: filter_movies_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "movies"} do |form| %>
-      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mt-6", data: {action: "input->search-form#search"} %>
+  
+   <%= form_with url: filter_movies_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "articles"} do |form| %>
+      
+      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
    <% end %>
  
-    <%= form_with url: filter_movies_path, method: :get, class: "flex flex-col", data: {turbo_frame: "movies"} do |form| %>
+    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "articles"}, class: "mr-4" do |form| %>
       <%= form.label "Starred:" %>
       <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
     <% end %>
 
-    <%= form_with url: filter_movies_path, method: :get, class: "flex flex-col", data: {turbo_frame: "movies"} do |form| %>
+    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "articles"} do |form| %>
       <%= form.label "Watched:" %>
       <%= form.select :show_consumed, [["All", nil], ["Watched Only", 1], ["Unwatched Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
     <% end %>
 </div>
   <%= turbo_frame_tag "movies", class: "contents" do %>
-  <div id="movies" class="grid grid-cols-4 w-1/2 mt-6 mx-auto">
+  <div id="movies" class="grid grid-cols-4 w-2/3 mt-6 mx-auto">
    
       <div class="border-t-2 border-gray-300 py-2">
         <span class="font-bold text-xl">Date Added</span>
