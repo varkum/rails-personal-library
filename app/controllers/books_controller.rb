@@ -4,20 +4,19 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    
+    session['filters'] = {}
     @books = Current.user.books.all
-    @books = @books.where(consumed: params[:show_consumed]) if params[:show_consumed].present?
-    @books = @books.where(starred: params[:show_starred]) if params[:show_starred].present?
-
-    
   end
 
   # GET /books/filter
   def filter
+    session['filters'] = {} if session['filters'].blank?
+    session['filters'].merge!(filter_params)
+    
     @books = Current.user.books.all
-    @books = Current.user.books.where("title like ?", "%#{params[:search]}%").or(Current.user.books.where("author like ?", "%#{params[:search]}%")) if params[:search]
-    @books = Current.user.books.where(consumed: params[:show_consumed]) if params[:show_consumed].present?
-    @books = Current.user.books.where(starred: params[:show_starred]) if params[:show_starred].present?
+    @books = @books.where("title like ?", "%#{session['filters']['search']}%").or(Current.user.books.where("author like ?", "%#{session['filters']['search']}%")) if session['filters']['search']
+    @books = @books.where(consumed: session['filters']['show_consumed']) if session['filters']['show_consumed'].present?
+    @books = @books.where(starred: session['filters']['show_starred']) if session['filters']['show_starred'].present?
     
     render :index
   end
@@ -85,6 +84,10 @@ class BooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :author, :notes, :starred, :consumed)
+    end
+
+    def filter_params
+      params.permit(:show_consumed, :show_starred, :search)
     end
 
     
