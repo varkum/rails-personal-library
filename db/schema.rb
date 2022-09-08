@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_134912) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_140654) do
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
@@ -71,6 +71,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_134912) do
     t.index ["user_id"], name: "index_tvshows_on_user_id"
   end
 
+  create_table "tweets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "author"
+    t.string "url"
+    t.text "notes"
+    t.boolean "consumed"
+    t.boolean "starred"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -84,4 +96,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_134912) do
   add_foreign_key "movies", "users"
   add_foreign_key "podcasts", "users"
   add_foreign_key "tvshows", "users"
+  add_foreign_key "tweets", "users"
 end
