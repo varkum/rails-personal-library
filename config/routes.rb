@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :tvshows do
+    collection do
+      get 'filter'
+    end
+  end
   resources :articles do
     collection do 
       get 'filter'

@@ -1,0 +1,23 @@
+<%= turbo_frame_tag tvshow, class: "contents" do %>
+       
+          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
+            <span><%=tvshow.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <% end %>
+          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span><%=tvshow.name%></span>
+          <% end %>
+        
+            <%= form_with(model: tvshow, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form.check_box :consumed, { value: !tvshow.consumed, onchange: 'this.form.requestSubmit()' }%>
+            <% end %>
+          
+            <%= button_to tvshow_path(tvshow.id, tvshow: {starred: !tvshow.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
+              <% if tvshow.starred %>
+                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+              <% else %>
+                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+              <% end %>
+            <% end %>
+              
+<% end %>
+  
