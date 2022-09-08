@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  podcast: MyString
+  url: MyString
+  notes: MyText
+  consumed: false
+  starred: false
+
+two:
+  user: two
+  name: MyString
+  podcast: MyString
+  url: MyString
+  notes: MyText
+  consumed: false
+  starred: false

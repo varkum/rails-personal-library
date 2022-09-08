@@ -1,0 +1,61 @@
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex items-center">
+    <h1 class="font-bold text-4xl m-auto mt-4">Podcasts</h1>
+    
+  </div>
+
+  <div class="w-2/3 mx-auto mt-10">
+    <%= link_to 'Add podcast', new_podcast_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
+  </div>
+
+  <div class="flex w-2/3 mx-auto mt-6">
+  
+  
+   <%= form_with url: filter_podcasts_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "podcasts"} do |form| %>
+      
+      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
+   <% end %>
+ 
+    <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"}, class: "mr-4" do |form| %>
+      <%= form.label "Starred:" %>
+      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
+    <% end %>
+
+    <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"} do |form| %>
+      <%= form.label "Finished:" %>
+      <%= form.select :show_consumed, [["All", nil], ["Finished Only", 1], ["Unfinished Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
+    <% end %>
+</div>
+  <%= turbo_frame_tag "podcasts", class: "contents" do %>
+  <div id="podcasts" class="grid grid-cols-6 w-2/3 mt-6 mx-auto">
+   
+      <div class="border-t-2 border-gray-300 py-2">
+        <span class="font-bold text-xl">Date Added</span>
+      </div>
+     <div class="border-t-2 border-gray-300 py-2">
+        <span class="font-bold text-xl">Name</span>
+      </div>
+      <div class="border-t-2 border-gray-300 py-2"> 
+        <span class="font-bold text-xl">Podcast</span>
+      </div>
+      <div class="border-t-2 border-gray-300 py-2"> 
+        <span class="font-bold text-xl">Link</span>
+      </div>
+      <div class="border-t-2 border-gray-300 py-2">
+        <span class="font-bold text-xl">Finished?</span>
+      </div>
+     <div class="border-t-2 border-gray-300 py-2">
+        
+      </div>
+        <%= render @podcasts %>
+    
+      </div>
+  <% end %>
+</div>
+
+

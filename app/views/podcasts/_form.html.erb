@@ -1,10 +1,10 @@
-<%= form_with(model: tvshow, class: "contents") do |form| %>
-  <% if tvshow.errors.any? %>
+<%= form_with(model: podcast, class: "contents") do |form| %>
+  <% if podcast.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(tvshow.errors.count, "error") %> prohibited this tvshow from being saved:</h2>
+      <h2><%= pluralize(podcast.errors.count, "error") %> prohibited this podcast from being saved:</h2>
 
       <ul>
-        <% tvshow.errors.each do |error| %>
+        <% podcast.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -14,6 +14,15 @@
   <div class="my-5">
     <%= form.label :name %>
     <%= form.text_field :name, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :podcast %>
+    <%= form.text_field :podcast, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :url %>
+    <%= form.text_field :url, disabled: viewing, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -27,14 +36,14 @@
   </div>
 
   <div class="my-5">
-    <%= form.label "Watched?" %>
+    <%= form.label "Completed?" %>
     <%= form.check_box :consumed, disabled: viewing, class: "block mt-2 h-5 w-5" %>
   </div>
 
   <% unless viewing %>
   <% if source == 'new' %>
      <div class="inline">
-        <%= form.submit "Add TV Show", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        <%= form.submit "Add podcast", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
       </div>
   <% elsif source == 'edit' %>
       <div class="inline">
