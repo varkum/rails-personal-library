@@ -31,31 +31,7 @@
       <%= form.select :show_consumed, [["All", nil], ["Read Only", 1], ["Unread Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
     <% end %>
 </div>
-  <%= turbo_frame_tag "articles", class: "contents" do %>
-  <div id="articles" class="grid grid-cols-6 w-2/3 mt-6 mx-auto">
-   
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Date Added</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Title</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2"> 
-        <span class="font-bold text-xl">Author</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2"> 
-        <span class="font-bold text-xl">Link</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Read?</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        
-      </div>
-        <%= render @articles %>
-    
-      </div>
-  <% end %>
+  <%= render partial: "articles", locals: {articles: @articles} %>
 </div>
 
 

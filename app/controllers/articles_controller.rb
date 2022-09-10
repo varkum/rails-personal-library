@@ -51,6 +51,7 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    @articles = Current.user.articles.where(consumed:false)
     respond_to do |format|
       if @article.update(article_params)
           format.turbo_stream 
