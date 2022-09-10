@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     @books = @books.where(consumed: session['filters']['show_consumed']) if session['filters']['show_consumed'].present?
     @books = @books.where(starred: session['filters']['show_starred']) if session['filters']['show_starred'].present?
     
-    render :index
+    render partial: "books", locals: {books: @books}
   end
 
   # GET /books/1 or /books/1.json
@@ -51,7 +51,9 @@ class BooksController < ApplicationController
 
   # PATCH/PUT /books/1 or /books/1.json
   def update
+    @books = Current.user.books.where(consumed: false)
     respond_to do |format|
+      
       if @book.update(book_params)
           format.turbo_stream 
           format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }

@@ -16,17 +16,17 @@
    <div class="flex w-2/3 mx-auto mt-6">
   
   
-   <%= form_with url: filter_movies_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "articles"} do |form| %>
+   <%= form_with url: filter_movies_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "movies"} do |form| %>
       
       <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
    <% end %>
  
-    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "articles"}, class: "mr-4" do |form| %>
+    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "movies"}, class: "mr-4" do |form| %>
       <%= form.label "Starred:" %>
       <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
     <% end %>
 
-    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "articles"} do |form| %>
+    <%= form_with url: filter_movies_path, method: :get, data: {turbo_frame: "movies"} do |form| %>
       <%= form.label "Watched:" %>
       <%= form.select :show_consumed, [["All", nil], ["Watched Only", 1], ["Unwatched Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
     <% end %>
