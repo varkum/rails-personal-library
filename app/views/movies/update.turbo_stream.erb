@@ -2,3 +2,7 @@
     <%= render @movie %>
 <% end %>
 
+<%= turbo_stream.replace "unwatched_movies" do %>
+    <%= render partial: "movies", locals: {movies: @movies} %>
+<% end %>
+

@@ -13,6 +13,12 @@
     <%= turbo_frame_tag "unread_articles" do %>
         <%= render partial: "articles/articles", locals: {articles: @articles} %>
     <% end %>
+     <div class="w-2/3 mx-auto mt-4">
+        <h2 class="font-bold text-2xl">Movies</h2>
+    </div>
+    <%= turbo_frame_tag "unwatched_movies" do %>
+        <%= render partial: "movies/movies", locals: {movies: @movies} %>
+    <% end %>
 
 
 </div>

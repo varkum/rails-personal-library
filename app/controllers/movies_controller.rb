@@ -50,6 +50,7 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
+    @movies = Current.user.movies.where(consumed:false)
     respond_to do |format|
       if @movie.update(movie_params)
         format.turbo_stream
