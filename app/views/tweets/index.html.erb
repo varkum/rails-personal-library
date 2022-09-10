@@ -26,10 +26,7 @@
       <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
     <% end %>
 
-    <%= form_with url: filter_tweets_path, method: :get, data: {turbo_frame: "tweets"} do |form| %>
-      <%= form.label "Finished:" %>
-      <%= form.select :show_consumed, [["All", nil], ["Finished Only", 1], ["Unfinished Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
-    <% end %>
+    
 </div>
   <%= turbo_frame_tag "tweets", class: "contents" do %>
   <div id="tweets" class="grid grid-cols-4 w-2/3 mt-6 mx-auto">

@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
     #root and GET /signin
     def index
-        
+        if Current.user.present?
+            redirect_to home_path
+        end
     end
 
     #POST /signin
