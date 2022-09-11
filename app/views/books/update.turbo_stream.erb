@@ -3,7 +3,12 @@
 <% end %>
 
 <%= turbo_stream.replace "unread_books" do %>
-    <%= turbo_frame_tag "unread_books" do %>
-        <%= render partial: "books", locals: {books: @books} %>
+     <%= turbo_frame_tag "unread_books" do %>
+            <% if @books.length > 0 %>
+                <div class="w-2/3 mx-auto mt-4">
+                    <h2 class="font-bold text-2xl">Books</h2>
+                </div>
+                <%= render partial: "books/books", locals: {books: @books} %>
+            <% end %>
     <% end %>
 <% end %>

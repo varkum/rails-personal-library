@@ -2,33 +2,55 @@
     <div class="text-center mx-auto mt-4">
         <h1 class="font-bold text-4xl">Up Next</h1>
     </div>
+
    
-    <div class="w-2/3 mx-auto mt-4">
-        <h2 class="font-bold text-2xl">Books</h2>
-    </div>
-    
     <%= turbo_frame_tag "unread_books" do %>
-        <%= render partial: "books/books", locals: {books: @books} %>
+            <% if @books.length > 0 %>
+                <div class="w-2/3 mx-auto mt-4">
+                    <h2 class="font-bold text-2xl">Books</h2>
+                </div>
+                <%= render partial: "books/books", locals: {books: @books} %>
+            <% end %>
     <% end %>
 
-    <div class="w-2/3 mx-auto mt-4">
-        <h2 class="font-bold text-2xl">Articles</h2>
-    </div>
+    
+        
     <%= turbo_frame_tag "unread_articles" do %>
-        <%= render partial: "articles/articles", locals: {articles: @articles} %>
+        <% if @articles.length > 0 %>
+            <div class="w-2/3 mx-auto mt-4">
+                <h2 class="font-bold text-2xl">Articles</h2>
+            </div>
+            <%= render partial: "articles/articles", locals: {articles: @articles} %>
+        <% end %>
     <% end %>
-     <div class="w-2/3 mx-auto mt-4">
-        <h2 class="font-bold text-2xl">Movies</h2>
-    </div>
+
     <%= turbo_frame_tag "unwatched_movies" do %>
-        <%= render partial: "movies/movies", locals: {movies: @movies} %>
+        <% if @movies.length > 0 %>
+            <div class="w-2/3 mx-auto mt-4">
+                <h2 class="font-bold text-2xl">Movies</h2>
+            </div>
+    
+            <%= render partial: "movies/movies", locals: {movies: @movies} %>
+        <% end %>
     <% end %>
-    <div class="w-2/3 mx-auto mt-4">
-        <h2 class="font-bold text-2xl">TV Shows</h2>
-    </div>
+
+    
     <%= turbo_frame_tag "unwatched_tvshows" do %>
+        <% if @tvshows.length > 0 %>
+        <div class="w-2/3 mx-auto mt-4">
+            <h2 class="font-bold text-2xl">TV Shows</h2>
+        </div>
         <%= render partial: "tvshows/tvshows", locals: {tvshows: @tvshows} %>
+        <% end %>
     <% end %>
 
-
+     <%= turbo_frame_tag "unconsumed_podcasts" do %>
+        <% if @podcasts.length > 0 %>
+        <div class="w-2/3 mx-auto mt-4">
+            <h2 class="font-bold text-2xl">Podcasts</h2>
+        </div>
+        <%= render partial: "podcasts/podcasts", locals: {podcasts: @podcasts} %>
+        <% end %>
+    <% end %>
+   
 </div>

@@ -4,7 +4,12 @@
 
 <%= turbo_stream.replace "unwatched_movies" do %>
     <%= turbo_frame_tag "unwatched_movies" do %>
+        <% if @movies.length > 0 %>
+        <div class="w-2/3 mx-auto mt-4">
+            <h2 class="font-bold text-2xl">Movies</h2>
+        </div>
         <%= render partial: "movies", locals: {movies: @movies} %>
+        <% end %>
     <% end %>
 <% end %>
 

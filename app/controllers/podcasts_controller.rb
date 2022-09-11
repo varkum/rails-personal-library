@@ -53,6 +53,7 @@ class PodcastsController < ApplicationController
   def update
     respond_to do |format|
       if @podcast.update(podcast_params)
+          @podcasts = Current.user.podcasts.where(consumed: false)
           format.turbo_stream 
           format.html { redirect_to podcast_url(@podcast), notice: "Podcast was successfully updated." }
           format.json { render :show, status: :ok, location: @podcast }
