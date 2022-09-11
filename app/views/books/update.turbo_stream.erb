@@ -3,5 +3,7 @@
 <% end %>
 
 <%= turbo_stream.replace "unread_books" do %>
-    <%= render partial: "books", locals: {books: @books} %>
+    <%= turbo_frame_tag "unread_books" do %>
+        <%= render partial: "books", locals: {books: @books} %>
+    <% end %>
 <% end %>

@@ -3,5 +3,7 @@
 <% end %>
 
 <%= turbo_stream.replace "unread_articles" do %>
-    <%= render partial: "articles", locals: {articles: @articles} %>
+    <%= turbo_frame_tag "unread_articles" do %>
+        <%= render partial: "articles", locals: {articles: @articles} %>
+    <% end %>
 <% end %>

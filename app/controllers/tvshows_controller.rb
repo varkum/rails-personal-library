@@ -51,8 +51,11 @@ class TvshowsController < ApplicationController
 
   # PATCH/PUT /tvshows/1 or /tvshows/1.json
   def update
+    
     respond_to do |format|
       if @tvshow.update(tvshow_params)
+          @tvshows = Current.user.tvshows.where(consumed: false)
+          #binding.pry
           format.turbo_stream 
           format.html { redirect_to tvshow_url(@tvshow), notice: "tvshow was successfully updated." }
           format.json { render :show, status: :ok, location: @tvshow }

@@ -3,6 +3,8 @@
 <% end %>
 
 <%= turbo_stream.replace "unwatched_movies" do %>
-    <%= render partial: "movies", locals: {movies: @movies} %>
+    <%= turbo_frame_tag "unwatched_movies" do %>
+        <%= render partial: "movies", locals: {movies: @movies} %>
+    <% end %>
 <% end %>
 

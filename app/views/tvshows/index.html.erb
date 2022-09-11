@@ -31,25 +31,7 @@
       <%= form.select :show_consumed, [["All", nil], ["Watched Only", 1], ["Unwatched Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
     <% end %>
 </div>
-  <%= turbo_frame_tag "tvshows", class: "contents" do %>
-  <div id="tvshows" class="grid grid-cols-4 w-2/3 mt-6 mx-auto">
-   
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Date Added</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Name</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Watched?</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        
-      </div>
-        <%= render @tvshows %>
-    
-      </div>
-  <% end %>
+ <%= render partial: "tvshows", locals: {tvshows: @tvshows} %>
 </div>
 
 

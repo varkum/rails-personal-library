@@ -1,3 +1,9 @@
 <%= turbo_stream.replace @tvshow do %>
     <%= render @tvshow %>
 <% end %>
+
+<%= turbo_stream.replace "unwatched_tvshows" do %>
+    <%= turbo_frame_tag "unwatched_tvshows" do %>
+        <%= render partial: "tvshows", locals: {tvshows: @tvshows} %>
+    <% end %>
+<% end %>
