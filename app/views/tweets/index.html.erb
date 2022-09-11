@@ -14,7 +14,7 @@
   </div>
 
   <div class="flex w-2/3 mx-auto mt-6">
-  
+    <% if @tweets.length > 0 %>
   
    <%= form_with url: filter_tweets_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "tweets"} do |form| %>
       
@@ -47,6 +47,10 @@
         <%= render @tweets %>
     
       </div>
+  <% end %>
+
+  <% else %>
+    <span class="italic text-gray-500 mx-auto">You don't have any tweets yet. Click "Add Tweet" to start your library!</span>
   <% end %>
 </div>
 

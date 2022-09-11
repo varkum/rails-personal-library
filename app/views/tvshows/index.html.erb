@@ -14,7 +14,7 @@
   </div>
 
    <div class="flex w-2/3 mx-auto mt-6">
-  
+    <% if @tvshows.length > 0 %>
   
    <%= form_with url: filter_tvshows_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "tvshows"} do |form| %>
       
@@ -32,6 +32,10 @@
     <% end %>
 </div>
  <%= render partial: "tvshows", locals: {tvshows: @tvshows} %>
+
+ <% else %>
+  <span class="italic text-gray-500 mx-auto">You don't have any TV shows yet. Click "Add TV Show" to start your library!</span>
+ <% end %>
 </div>
 
 

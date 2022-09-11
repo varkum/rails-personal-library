@@ -13,7 +13,7 @@
     <%= link_to 'Add book', new_book_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
    <div class="flex w-2/3 mx-auto mt-6">
-  
+      <% if @books.length > 0 %>
   
    <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
       
@@ -32,7 +32,9 @@
 </div>
 
 <%= render partial: "books", locals: {books: @books } %>
-
+  <% else %>
+    <span class="italic text-gray-500 mx-auto">You don't have any books yet. Click "Add Book" to start your library!</span>
+  <% end %>
   
 </div>
 

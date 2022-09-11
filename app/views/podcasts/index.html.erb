@@ -14,7 +14,7 @@
   </div>
 
   <div class="flex w-2/3 mx-auto mt-6">
-  
+    <% if @podcasts.length > 0 %>
   
    <%= form_with url: filter_podcasts_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "podcasts"} do |form| %>
       
@@ -32,6 +32,10 @@
     <% end %>
 </div>
   <%= render partial: "podcasts", locals: {podcasts: @podcasts} %>
+
+  <% else %>
+    <span class="italic text-gray-500 mx-auto">You don't have any podcasts yet. Click "Add Podcast" to start your library!</span>
+  <% end %>
 </div>
 
 
