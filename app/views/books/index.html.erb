@@ -6,36 +6,33 @@
 
   <div class="flex items-center">
     <h1 class="font-bold text-4xl m-auto mt-4">Books</h1>
-    
   </div>
 
-  <div class="w-2/3 mx-auto mt-10">
+  <div class="w-full lg:w-2/3 ml-4 lg:mx-auto mt-6 lg:mt-10">
     <%= link_to 'Add book', new_book_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
 
-   <div class="flex w-2/3 mx-auto mt-6">
-      <% if @books.length > 0 %>
-  
-   <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
-      
-      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
-   <% end %>
- 
-    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"}, class: "mr-4" do |form| %>
-      <%= form.label "Starred:" %>
-      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
-    <% end %>
+  <% if @books.length > 0 %>
+   <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 mx-4 lg:mx-auto mt-6">
+         <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
+          <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg w-full lg:w-auto lg:mr-4", data: {action: "input->search-form#search"} %>
+        <% end %>
+        <div class="lg:hidden flex mb-3">
+          <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"}, class: "mr-4" do |form| %>
+            <%= form.label "Starred:", class: "text-sm lg:text-base" %>
+            <%= form.select :show_starred, [["All", nil], ["Starred", 1], ["Not Starred", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg text-sm lg:text-base"} %>
+          <% end %>
+          <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
+            <%= form.label "Read:", class: "text-sm lg:text-base" %>
+            <%= form.select :show_consumed, [["All", nil], ["Read", 1], ["Unread", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg text-sm lg:text-base"} %>
+          <% end %>
+        </div>
+    </div>
+        <%= render partial: "books", locals: {books: @books } %>
 
-    <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"} do |form| %>
-      <%= form.label "Read:" %>
-      <%= form.select :show_consumed, [["All", nil], ["Read Only", 1], ["Unread Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
+    <% else %>
+      <span class="italic text-gray-500 mx-auto">You don't have any books yet. Click "Add Book" to start your library!</span>
     <% end %>
-</div>
-
-<%= render partial: "books", locals: {books: @books } %>
-  <% else %>
-    <span class="italic text-gray-500 mx-auto">You don't have any books yet. Click "Add Book" to start your library!</span>
-  <% end %>
   
 </div>
 
