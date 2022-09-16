@@ -2,5 +2,5 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "@fortawesome/fontawesome-free";
-import "controllers"
-import "@hotwired/turbo-rails"
+import "controllers";
+import "@hotwired/turbo-rails";

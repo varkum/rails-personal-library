@@ -1,31 +1,56 @@
-<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6">
+<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6" data-controller="navbar">
      <div class="flex items-center flex-shrink-0 text-white mr-6">
         <%= link_to "Personal Library", root_path, class: "font-semibold text-xl tracking-tight" %>
      </div>
-     
+
+  <div class="lg:hidden" data-navbar-target= "button" >
+       <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <!--
+            Icon when menu is closed.
+
+            Heroicon name: outline/bars-3
+
+            Menu open: "hidden", Menu closed: "block"
+          -->
+         <i class="fa-solid fa-bars fa-xl" id="open-btn" data-action="click->navbar#open"></i>
+          <!--
+            Icon when menu is open.
+
+            Heroicon name: outline/x-mark
+
+            Menu open: "block", Menu closed: "hidden"
+          -->
+         <i class="hidden fa-solid fa-xmark fa-xl"  id="close-btn" data-action="click->navbar#close"></i>
+        </button>
+     </div>
       
     <% if Current.user %>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      <%= link_to "Books", books_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
-     <%= link_to "Articles", articles_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
-      <%= link_to "Movies", movies_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
-      <%= link_to "TV Shows", tvshows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
-      <%= link_to "Podcasts", podcasts_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
-      <%= link_to "Tweets", tweets_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
-     
-     
-     
-      
-      
-      
+    <div class="hidden lg:flex w-auto flex-grow items-center">
+      <div class="text-sm lg:flex-grow">
+        <%= link_to "Books", books_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+        <%= link_to "Articles", articles_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "Movies", movies_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "TV Shows", tvshows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "Podcasts", podcasts_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+        <%= link_to "Tweets", tweets_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+      </div>
+  
+      <div class="w-auto flex items-center">
+        <%= link_to "Account", account_path, class: "block lg:inline-block text-gray-200 hover:text-white"%>
+        <%= button_to "Log out", signin_path, method: :delete, class: "ml-3 block lg:inline-block text-white text-sm bg-red-500 p-2 rounded font-medium cursor-pointer hover:opacity-70"%>
+      </div>
     </div>
-    
-   
-    
-    <div class="w-full block lg:flex lg:items-center lg:w-auto">
-      <%= link_to "Account", account_path, class: "block lg:inline-block text-gray-200 hover:text-white"%>
-      <%= button_to "Log out", signin_path, method: :delete, class: "ml-3 block lg:inline-block text-white text-sm bg-red-500 p-2 rounded font-medium cursor-pointer hover:opacity-70"%>
+
+    <div class="hidden lg:hidden" data-navbar-target="menu">
+      <div class="flex flex-col w-auto">
+        <%= link_to "Books", books_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+        <%= link_to "Articles", articles_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "Movies", movies_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "TV Shows", tvshows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
+        <%= link_to "Podcasts", podcasts_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+        <%= link_to "Tweets", tweets_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+      </div>
     </div>
     <% end %>
     
