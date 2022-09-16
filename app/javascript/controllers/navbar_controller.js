@@ -16,10 +16,11 @@ export default class extends Controller {
 
   close() {
     this.menuTarget.classList.toggle("hidden");
+    let template = document.createElement("template");
+    template.innerHTML =
+      "<i class='fa-solid fa-bars fa-xl' data-action='click->navbar#open' id='open-btn'></i>";
     document
       .querySelector("#close-btn")
-      .replaceWith(
-        "<i class='fa-solid fa-bars fa-xl' data-action='click->navbar#open' id='open-btn'></i>"
-      );
+      .replaceWith(template.content.firstChild);
   }
 }
