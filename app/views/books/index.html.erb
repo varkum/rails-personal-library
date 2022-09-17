@@ -17,7 +17,7 @@
          <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
           <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg w-full lg:w-auto lg:mr-4", data: {action: "input->search-form#search"} %>
         <% end %>
-        <div class="lg:hidden flex mb-3">
+        <div class=" flex mb-3">
           <%= form_with url: filter_books_path, method: :get, data: {turbo_frame: "books"}, class: "mr-4" do |form| %>
             <%= form.label "Starred:", class: "text-sm lg:text-base" %>
             <%= form.select :show_starred, [["All", nil], ["Starred", 1], ["Not Starred", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg text-sm lg:text-base"} %>
