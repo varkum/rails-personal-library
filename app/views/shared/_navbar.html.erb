@@ -1,4 +1,6 @@
-<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6" data-controller="navbar">
+<nav class="w-full flex items-center justify-between flex-wrap bg-blue-800 p-6 fixed top-0" data-controller="navbar">
+<div class="w-full flex flex-col lg:flex-row">
+  <div class="w-full lg:w-auto flex justify-between flex-row ">
      <div class="flex items-center flex-shrink-0 text-white mr-6">
         <%= link_to "Personal Library", root_path, class: "font-semibold text-xl tracking-tight" %>
      </div>
@@ -6,24 +8,10 @@
   <div class="lg:hidden" data-navbar-target= "button" >
        <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
-          <!--
-            Icon when menu is closed.
-
-            Heroicon name: outline/bars-3
-
-            Menu open: "hidden", Menu closed: "block"
-          -->
          <i class="fa-solid fa-bars fa-xl" id="open-btn" data-action="click->navbar#open"></i>
-          <!--
-            Icon when menu is open.
-
-            Heroicon name: outline/x-mark
-
-            Menu open: "block", Menu closed: "hidden"
-          -->
-         <i class="hidden fa-solid fa-xmark fa-xl"  id="close-btn" data-action="click->navbar#close"></i>
         </button>
-     </div>
+  </div>
+  </div>
       
     <% if Current.user %>
     <div class="hidden lg:flex w-auto flex-grow items-center">
@@ -53,5 +41,5 @@
       </div>
     </div>
     <% end %>
-    
+    </div>
 </nav>

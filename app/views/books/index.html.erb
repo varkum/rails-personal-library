@@ -1,5 +1,5 @@
 
-<div class="w-full">
+<div class="w-full mt-20 mx-8">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -8,12 +8,12 @@
     <h1 class="font-bold text-4xl m-auto mt-4">Books</h1>
   </div>
 
-  <div class="w-full lg:w-2/3 ml-4 lg:mx-auto mt-6 lg:mt-10">
+  <div class="w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
     <%= link_to 'Add book', new_book_path, target: "_top", class: "text-center w-32 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
 
   <% if @books.length > 0 %>
-   <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 mx-4 lg:mx-auto mt-6">
+   <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 lg:mx-auto mt-6">
          <%= form_with url: filter_books_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "books"} do |form| %>
           <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg w-full lg:w-auto lg:mr-4", data: {action: "input->search-form#search"} %>
         <% end %>
