@@ -38,6 +38,8 @@
         <%= link_to "TV Shows", tvshows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"%>
         <%= link_to "Podcasts", podcasts_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
         <%= link_to "Tweets", tweets_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+        <%= link_to "Account", account_path, class: "block mt-4 lg:inline-block text-gray-200 hover:text-white"%>
+        <%= button_to "Log out", signin_path, method: :delete, class: "mt-4 block lg:inline-block text-white text-sm bg-red-500 p-2 rounded font-medium cursor-pointer hover:opacity-70"%>
       </div>
     </div>
     <% end %>
