@@ -9,27 +9,25 @@
     
   </div>
 
-  <div class="w-2/3 mx-auto mt-10">
+  <div class="w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
     <%= link_to 'Add podcast', new_podcast_path, target: "_top", class: "text-center w-36 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
 
-  <div class="flex w-2/3 mx-auto mt-6">
-    <% if @podcasts.length > 0 %>
-  
-   <%= form_with url: filter_podcasts_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "podcasts"} do |form| %>
-      
-      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
-   <% end %>
- 
-    <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"}, class: "mr-4" do |form| %>
-      <%= form.label "Starred:" %>
-      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
-    <% end %>
-
-    <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"} do |form| %>
-      <%= form.label "Finished:" %>
-      <%= form.select :show_consumed, [["All", nil], ["Finished Only", 1], ["Unfinished Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg"} %>
-    <% end %>
+  <% if @podcasts.length > 0 %>
+    <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 lg:mx-auto mt-6">
+      <%= form_with url: filter_podcasts_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "podcasts"} do |form| %>
+        <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg w-full lg:w-auto lg:mr-4", data: {action: "input->search-form#search"} %>
+      <% end %>
+      <div class="flex mb-3">
+        <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"}, class: "mr-4" do |form| %>
+          <%= form.label "Starred:", class: "text-sm lg:text-base" %>
+          <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg text-sm lg:text-base"} %>
+        <% end %>
+        <%= form_with url: filter_podcasts_path, method: :get, data: {turbo_frame: "podcasts"} do |form| %>
+          <%= form.label "Finished:", class: "text-sm lg:text-base" %>
+          <%= form.select :show_consumed, [["All", nil], ["Finished Only", 1], ["Unfinished Only", 0]], {}, {onchange: "this.form.requestSubmit()", class: "w-42 rounded-lg text-sm lg:text-base"} %>
+        <% end %>
+    </div>
 </div>
   <%= render partial: "podcasts", locals: {podcasts: @podcasts} %>
 

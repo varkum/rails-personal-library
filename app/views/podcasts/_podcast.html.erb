@@ -1,16 +1,16 @@
 <%= turbo_frame_tag podcast, class: "contents" do %>
        
-          <%= link_to podcast_path(podcast.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <span><%=podcast.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <%= link_to podcast_path(podcast.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=podcast.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to podcast_path(podcast.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=podcast.name%></span>
+          <%= link_to podcast_path(podcast.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=podcast.name%></span>
           <% end %>
-          <%= link_to podcast_path(podcast.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=podcast.podcast%></span>
+          <%= link_to podcast_path(podcast.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=podcast.podcast%></span>
           <% end %>
-          <%= link_to podcast.url, target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
-            <span><%=truncate(podcast.url, length: 18)%></span>
+          <%= link_to podcast.url, target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
+            <span class="text-sm lg:text-base"><%=truncate(podcast.url, length: 18)%></span>
           <% end %>
             <%= form_with(model: podcast, class: "py-3 border-t-2 border-gray-300") do |form| %>
             <%= form.check_box :consumed, { value: !podcast.consumed, onchange: 'this.form.requestSubmit()' }%>
