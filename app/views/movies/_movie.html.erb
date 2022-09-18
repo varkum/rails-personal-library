@@ -1,10 +1,10 @@
 <%= turbo_frame_tag movie, class: "contents" do %>
        
-          <%= link_to movie_path(movie.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <span><%=movie.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <%= link_to movie_path(movie.id), target: "_top", class: "break-words py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=movie.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to movie_path(movie.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=movie.name%></span>
+          <%= link_to movie_path(movie.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=movie.name%></span>
           <% end %>
         
             <%= form_with(model: movie, class: "py-3 border-t-2 border-gray-300") do |form| %>
@@ -13,9 +13,9 @@
           
             <%= button_to movie_path(movie.id, movie: {starred: !movie.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
               <% if movie.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+                <i class='fa-solid fa-star fa-lg text-yellow-500 ml-4'></i>
               <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+                <i class="fa-regular fa-star fa-lg text-yellow-500 ml-4"></i>
               <% end %>
             <% end %>
               
