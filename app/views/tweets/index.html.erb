@@ -9,36 +9,33 @@
     
   </div>
 
-  <div class="w-2/3 mx-auto mt-10">
+  <div class="w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
     <%= link_to 'Add tweet', new_tweet_path, target: "_top", class: "text-center w-36 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
   </div>
 
-  <div class="flex w-2/3 mx-auto mt-6">
-    <% if @tweets.length > 0 %>
-  
-   <%= form_with url: filter_tweets_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "tweets"} do |form| %>
-      
-      <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg mr-4", data: {action: "input->search-form#search"} %>
-   <% end %>
- 
-    <%= form_with url: filter_tweets_path, method: :get, data: {turbo_frame: "tweets"}, class: "mr-4" do |form| %>
-      <%= form.label "Starred:" %>
-      <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg"} %>
-    <% end %>
+   <% if @tweets.length > 0 %>
+    <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 lg:mx-auto mt-6">
+      <%= form_with url: filter_tweets_path, method: :get, data: {controller: "search-form", search_form_target: "form", turbo_frame: "tweets"} do |form| %>
+        <%= form.text_field :search, placeholder: "Search...", class: "rounded-lg w-full lg:w-auto lg:mr-4", data: {action: "input->search-form#search"} %>
+      <% end %>
+      <%= form_with url: filter_tweets_path, method: :get, data: {turbo_frame: "tweets"}, class: "mb-3 mr-4" do |form| %>
+        <%= form.label "Starred:" %>
+        <%= form.select :show_starred, [["All", nil], ["Starred Only", 1], ["Not Starred Only", 0]],  {}, {onchange: "this.form.requestSubmit()", class: "rounded-lg text-sm lg:text-base"} %>
+      <% end %>
 
-    
-</div>
+
+    </div>
   <%= turbo_frame_tag "tweets", class: "contents" do %>
-  <div id="tweets" class="grid grid-cols-4 w-2/3 mt-6 mx-auto">
+  <div id="tweets" class="grid grid-cols-4 lg:w-2/3 mt-4 lg:mt-6 lg:mx-auto">
    
       <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Date Added</span>
+        <span class="font-bold text-lg lg:text-xl">Date Added</span>
       </div>
      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-xl">Author</span>
+        <span class="font-bold text-lg lg:text-xl">Author</span>
       </div>
       <div class="border-t-2 border-gray-300 py-2"> 
-        <span class="font-bold text-xl">Link</span>
+        <span class="font-bold text-lg lg:text-xl">Link</span>
       </div>
       
      <div class="border-t-2 border-gray-300 py-2">

@@ -1,21 +1,21 @@
 <%= turbo_frame_tag tweet, class: "contents" do %>
        
-          <%= link_to tweet_path(tweet.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <span><%=tweet.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <%= link_to tweet_path(tweet.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=tweet.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to tweet_path(tweet.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=tweet.author%></span>
+          <%= link_to tweet_path(tweet.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=tweet.author%></span>
           <% end %>
-          <%= link_to tweet.url, target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
-            <span><%=truncate(tweet.url, length: 18)%></span>
+          <%= link_to tweet.url, target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
+            <span class="text-sm lg:text-base"><%=truncate(tweet.url, length: 18)%></span>
           <% end %>
          
           
             <%= button_to tweet_path(tweet.id, tweet: {starred: !tweet.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
               <% if tweet.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+                <i class='fa-solid fa-star fa-lg text-yellow-500 ml-4'></i>
               <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+                <i class="fa-regular fa-star fa-lg text-yellow-500 ml-4"></i>
               <% end %>
             <% end %>
               
