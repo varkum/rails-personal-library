@@ -1,10 +1,10 @@
 <%= turbo_frame_tag tvshow, class: "contents" do %>
        
-          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <span><%=tvshow.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "break-words py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=tvshow.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=tvshow.name%></span>
+          <%= link_to tvshow_path(tvshow.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=tvshow.name%></span>
           <% end %>
         
             <%= form_with(model: tvshow, class: "py-3 border-t-2 border-gray-300") do |form| %>
@@ -13,9 +13,9 @@
           
             <%= button_to tvshow_path(tvshow.id, tvshow: {starred: !tvshow.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
               <% if tvshow.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+                <i class='fa-solid fa-star fa-lg text-yellow-500 ml-4'></i>
               <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+                <i class="fa-regular fa-star fa-lg text-yellow-500 ml-4"></i>
               <% end %>
             <% end %>
               
