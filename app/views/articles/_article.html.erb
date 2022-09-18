@@ -1,16 +1,16 @@
 <%= turbo_frame_tag article, class: "contents" do %>
        
-          <%= link_to article_path(article.id), target: "_top", class: "py-3 border-t-2 border-gray-300" do %>
-            <span><%=article.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+          <%= link_to article_path(article.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-30" do %>
+            <span class="text-sm lg:text-base"><%=article.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= link_to article_path(article.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=article.title%></span>
+          <%= link_to article_path(article.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=article.title%></span>
           <% end %>
-          <%= link_to article_path(article.id), target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300" do %>
-            <span><%=article.author%></span>
+          <%= link_to article_path(article.id), target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-sm lg:text-base"><%=article.author%></span>
           <% end %>
-          <%= link_to article.url, target: "_top", class: "pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
-            <span><%=truncate(article.url, length: 18)%></span>
+          <%= link_to article.url, target: "_top", class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
+            <span class="text-sm lg:text-base"><%=truncate(article.url, length: 18)%></span>
           <% end %>
             <%= form_with(model: article, class: "py-3 border-t-2 border-gray-300") do |form| %>
             <%= form.check_box :consumed, { value: !article.consumed, onchange: 'this.form.requestSubmit()' }%>
