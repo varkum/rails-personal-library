@@ -1,6 +1,6 @@
 <div class="flex flex-col mt-6 ml-4">
     <h1 class="font-semibold text-2xl">Edit your Password</h1>
-    <%= form_with(model: @user, url: '/account/edit', class: "mt-5 w-96") do |form|%>
+    <%= form_with(model: @user, url: '/account/edit', class: "mt-5 w-80 sm:w-96") do |form|%>
     <div>
         <%= form.label :password, class: "block text-gray-700 text-lg font-medium" %>
         <%= form.password_field :password, class: "w-full rounded mb-4 border-1", placeholder: "*********"%>

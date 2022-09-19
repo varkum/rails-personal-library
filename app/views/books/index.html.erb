@@ -5,7 +5,7 @@
   <% end %>
 
   <div class="flex items-center">
-    <h1 class="font-bold text-4xl m-auto mt-4">Books</h1>
+    <h1 class="font-bold text-4xl m-auto mt-20">Books</h1>
   </div>
 
   <div class="w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
@@ -31,7 +31,7 @@
         <%= render partial: "books", locals: {books: @books } %>
 
     <% else %>
-      <span class="italic text-gray-500 mx-auto">You don't have any books yet. Click "Add Book" to start your library!</span>
+      <span class="italic text-gray-500 mx-auto mt-4">You don't have any books yet. Click "Add Book" to start your library!</span>
     <% end %>
   
 </div>

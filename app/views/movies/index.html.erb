@@ -5,7 +5,7 @@
   <% end %>
 
   <div class="flex items-center">
-    <h1 class="font-bold text-4xl m-auto mt-4">Movies</h1>
+    <h1 class="font-bold text-4xl m-auto mt-20">Movies</h1>
 
   </div>
 
@@ -32,7 +32,7 @@
   <%= render partial: "movies", locals: {movies: @movies} %>
 
   <% else %>
-    <span class="italic text-gray-500 mx-auto">You don't have any movies yet. Click "Add Movie" to start your library!</span>
+    <span class="italic text-gray-500 mx-auto mt-4">You don't have any movies yet. Click "Add Movie" to start your library!</span>
   <% end %>
 </div>
 

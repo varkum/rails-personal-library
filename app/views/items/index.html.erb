@@ -1,12 +1,12 @@
 <div class="w-full">
-    <div class="text-center mx-auto mt-4">
+    <div class="text-center mx-auto mt-20">
         <h1 class="font-bold text-4xl">Up Next</h1>
     </div>
 
    
     <%= turbo_frame_tag "unread_books" do %>
             <% if @books.length > 0 %>
-                <div class="w-2/3 mx-auto mt-4">
+                <div class="w-full lg:w-2/3 mx-auto mt-4">
                     <h2 class="font-bold text-2xl">Books</h2>
                 </div>
                 <%= render partial: "books/books", locals: {books: @books} %>
@@ -17,7 +17,7 @@
         
     <%= turbo_frame_tag "unread_articles" do %>
         <% if @articles.length > 0 %>
-            <div class="w-2/3 mx-auto mt-4">
+            <div class="w-full lg:w-2/3 mx-auto mt-4">
                 <h2 class="font-bold text-2xl">Articles</h2>
             </div>
             <%= render partial: "articles/articles", locals: {articles: @articles} %>
@@ -26,7 +26,7 @@
 
     <%= turbo_frame_tag "unwatched_movies" do %>
         <% if @movies.length > 0 %>
-            <div class="w-2/3 mx-auto mt-4">
+            <div class="w-full lg:w-2/3 mx-auto mt-4">
                 <h2 class="font-bold text-2xl">Movies</h2>
             </div>
     
@@ -37,7 +37,7 @@
     
     <%= turbo_frame_tag "unwatched_tvshows" do %>
         <% if @tvshows.length > 0 %>
-        <div class="w-2/3 mx-auto mt-4">
+        <div class="w-full lg:w-2/3 mx-auto mt-4">
             <h2 class="font-bold text-2xl">TV Shows</h2>
         </div>
         <%= render partial: "tvshows/tvshows", locals: {tvshows: @tvshows} %>
@@ -46,7 +46,7 @@
 
      <%= turbo_frame_tag "unconsumed_podcasts" do %>
         <% if @podcasts.length > 0 %>
-        <div class="w-2/3 mx-auto mt-4">
+        <div class="w-full lg:w-2/3 mx-auto mt-4">
             <h2 class="font-bold text-2xl">Podcasts</h2>
         </div>
         <%= render partial: "podcasts/podcasts", locals: {podcasts: @podcasts} %>

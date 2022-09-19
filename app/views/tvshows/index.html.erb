@@ -5,7 +5,7 @@
   <% end %>
 
   <div class="flex items-center">
-    <h1 class="font-bold text-4xl m-auto mt-4">TV Shows</h1>
+    <h1 class="font-bold text-4xl m-auto mt-20">TV Shows</h1>
     
   </div>
 
@@ -33,7 +33,7 @@
  <%= render partial: "tvshows", locals: {tvshows: @tvshows} %>
 
  <% else %>
-  <span class="italic text-gray-500 mx-auto">You don't have any TV shows yet. Click "Add TV Show" to start your library!</span>
+  <span class="italic text-gray-500 mx-auto mt-4">You don't have any TV shows yet. Click "Add TV Show" to start your library!</span>
  <% end %>
 </div>
 
