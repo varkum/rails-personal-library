@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         
         @user = User.new(user_params)
         if @user.save!
+            session[:user_id] = @user.id
             redirect_to home_path, notice: "Your account was successfully created. Begin by adding items to a list."
         else
             render :new
