@@ -7,12 +7,12 @@
     <%= render "form", movie: @movie, viewing: true, source: "show" %>
 
   <div class="flex justify-between">
-  <div>
+  <div class="flex flex-wrap">
     <%= link_to 'Edit', edit_movie_path(@movie), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium hover:opacity-70" %>
     <div class="inline-block ml-2">
       <%= button_to 'Delete', movie_path(@movie), method: :delete, class: "bg-red-500 mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium hover:opacity-70" %>
     </div>
     </div>
-    <%= link_to 'Back to movies', movies_path, class: "my-auto ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium hover:opacity-70" %>
+    <%= link_to 'Back to movies', movies_path, class: "mt-2 ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium hover:opacity-70" %>
  </div>
 </div>

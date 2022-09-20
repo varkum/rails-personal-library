@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
         @movies = Current.user.movies.where(consumed: false)
         @articles = Current.user.articles.where(consumed: false)
         @podcasts = Current.user.podcasts.where(consumed: false)
-        @tweets = Current.user.tweets.where(consumed: false)
+        @tweets = Current.user.tweets
         @tvshows = Current.user.tvshows.where(consumed: false)
     end
 end 
