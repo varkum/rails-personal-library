@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "add_form", class: "contents" do %>
 <%= form_with(model: tweet, class: "contents") do |form| %>
   <% if tweet.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -36,7 +37,7 @@
   <% unless viewing %>
   <% if source == 'new' %>
      <div class="inline">
-        <%= form.submit "Add tweet", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        <%= form.submit "Add tweet", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {turbo_frame: "_top"} %>
       </div>
   <% elsif source == 'edit' %>
       <div class="inline">
@@ -44,4 +45,5 @@
       </div>
   <% end %>
   <% end %>
+<% end %>
 <% end %>
