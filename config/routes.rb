@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   get "home", to: "items#index"
   get "add", to: "items#new"
+  post "add", to: "items#create"
+  
   # Defines the root path route ("/")
   root "sessions#index"
 end

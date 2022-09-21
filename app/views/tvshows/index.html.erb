@@ -33,8 +33,10 @@
  <%= render partial: "tvshows", locals: {tvshows: @tvshows} %>
 
  <% else %>
-  <span class="italic text-gray-500 mx-auto mt-4">You don't have any TV shows yet. Click "Add TV Show" to start your library!</span>
- <% end %>
+  <div class="w-full text-center mt-4">
+    <span class="italic text-gray-500">You don't have any TV shows yet. Click "Add TV Show" to start your library!</span>
+  </div> 
+<% end %>
 </div>
 
 

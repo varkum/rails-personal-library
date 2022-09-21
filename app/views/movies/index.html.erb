@@ -32,7 +32,9 @@
   <%= render partial: "movies", locals: {movies: @movies} %>
 
   <% else %>
-    <span class="italic text-gray-500 mx-auto mt-4">You don't have any movies yet. Click "Add Movie" to start your library!</span>
+      <div class="w-full text-center mt-4">
+        <span class="italic text-gray-500">You don't have any movies yet. Click "Add Movie" to start your library!</span>
+      </div>  
   <% end %>
 </div>
 

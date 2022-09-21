@@ -11,7 +11,15 @@ class ItemsController < ApplicationController
     end
 
 
-    def new 
+    def new
+    end
 
+    def create 
+        case params[:type]
+        when "Book"
+        when "Movie"
+            @movie = Movie.new
+            render partial: "movies/form", locals: {movie: @movie, viewing: false, source: "new"}
+        end
     end
 end 

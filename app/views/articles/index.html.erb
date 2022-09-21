@@ -32,7 +32,9 @@
   <%= render partial: "articles", locals: {articles: @articles} %>
 
   <% else %>
-    <span class="italic text-gray-500 mx-auto mt-4">You don't have any articles yet. Click "Add Article" to start your library!</span>
+      <div class="w-full text-center mt-4">
+        <span class="italic text-gray-500">You don't have any articles yet. Click "Add Articles" to start your library!</span>
+      </div>  
   <% end %>
 </div>
 
