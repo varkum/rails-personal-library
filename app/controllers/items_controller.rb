@@ -9,4 +9,9 @@ class ItemsController < ApplicationController
         @tweets = Current.user.tweets
         @tvshows = Current.user.tvshows.where(consumed: false)
     end
+
+
+    def new 
+
+    end
 end 

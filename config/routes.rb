@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   patch 'reset_password/edit', to: "password_resets#update"
 
   get "home", to: "items#index"
+  get "add", to: "items#new"
   # Defines the root path route ("/")
   root "sessions#index"
 end
