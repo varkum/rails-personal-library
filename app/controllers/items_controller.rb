@@ -16,10 +16,24 @@ class ItemsController < ApplicationController
 
     def create 
         case params[:type]
+        when "Article"
+            @article = Current.user.articles.new
+            render partial: "articles/form", locals: {article: @article, viewing: false, source: "new"}
         when "Book"
+            @book = Current.user.books.new
+            render partial: "books/form", locals: {book: @book, viewing: false, source: "new"}
         when "Movie"
-            @movie = Movie.new
+            @movie = Current.user.movies.new
             render partial: "movies/form", locals: {movie: @movie, viewing: false, source: "new"}
+        when "TV Show"
+            @tvshow = Current.user.tvshows.new
+            render partial: "tvshows/form", locals: {tvshow: @tvshow, viewing: false, source: "new"}
+        when "Podcast"
+            @podcast = Current.user.podcasts.new
+            render partial: "podcasts/form", locals: {podcast: @podcast, viewing: false, source: "new"}
+        when "Tweet"
+            @tweet = Current.user.tweets.new
+            render partial: "tweets/form", locals: {tweet: @tweet, viewing: false, source: "new"}
         end
     end
 end 
