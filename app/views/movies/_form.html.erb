@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "add_form", class: "contents" do %>
-<%= form_with(model: movie, class: "contents") do |form| %>
+<%= form_with(model: movie, class: "contents", format: :html) do |form| %>
   <% if movie.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>

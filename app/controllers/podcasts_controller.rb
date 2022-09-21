@@ -55,7 +55,7 @@ class PodcastsController < ApplicationController
       if @podcast.update(podcast_params)
           @podcasts = Current.user.podcasts.where(consumed: false)
           format.turbo_stream 
-          format.html { redirect_to podcast_url(@podcast), notice: "Podcast was successfully updated." }
+          format.html { redirect_to podcast_url(@podcast) }
           format.json { render :show, status: :ok, location: @podcast }
          
         
@@ -71,7 +71,7 @@ class PodcastsController < ApplicationController
     @podcast.destroy
 
     respond_to do |format|
-      format.html { redirect_to podcasts_url, notice: "Podcast was successfully deleted." }
+      format.html { redirect_to podcasts_url}
       format.json { head :no_content }
     end
   end

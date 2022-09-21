@@ -56,7 +56,7 @@ class BooksController < ApplicationController
       
       if @book.update(book_params)
           format.turbo_stream 
-          format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
+          format.html { redirect_to book_url(@book) }
           format.json { render :show, status: :ok, location: @book }
          
         
@@ -72,7 +72,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: "Book was successfully deleted." }
+      format.html { redirect_to books_url }
       format.json { head :no_content }
     end
   end

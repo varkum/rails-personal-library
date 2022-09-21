@@ -57,7 +57,7 @@ class TvshowsController < ApplicationController
           @tvshows = Current.user.tvshows.where(consumed: false)
           #binding.pry
           format.turbo_stream 
-          format.html { redirect_to tvshow_url(@tvshow), notice: "tvshow was successfully updated." }
+          format.html { redirect_to tvshow_url(@tvshow) }
           format.json { render :show, status: :ok, location: @tvshow }
          
         
@@ -73,7 +73,7 @@ class TvshowsController < ApplicationController
     @tvshow.destroy
 
     respond_to do |format|
-      format.html { redirect_to tvshows_url, notice: "tvshow was successfully deleted." }
+      format.html { redirect_to tvshows_url }
       format.json { head :no_content }
     end
   end

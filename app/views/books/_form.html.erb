@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "add_form", class: "contents" do %>
-<%= form_with(model: book, class: "contents") do |form| %>
+<%= form_with(model: book, class: "contents", format: :html) do |form| %>
   <% if book.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -44,7 +44,7 @@
       </div>
   <% elsif source == 'edit' %>
       <div class="inline">
-        <%= form.submit "Confirm", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        <%= form.submit "Confirm", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer", data: {turbo_frame: "_top"} %>
       </div>
   <% end %>
   <% end %>

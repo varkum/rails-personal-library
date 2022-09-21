@@ -54,7 +54,7 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.update(tweet_params)
           format.turbo_stream 
-          format.html { redirect_to tweet_url(@tweet), notice: "Tweet was successfully updated." }
+          format.html { redirect_to tweet_url(@tweet)}
           format.json { render :show, status: :ok, location: @tweet }
          
         
@@ -70,7 +70,7 @@ class TweetsController < ApplicationController
     @tweet.destroy
 
     respond_to do |format|
-      format.html { redirect_to tweets_url, notice: "Tweet was successfully deleted." }
+      format.html { redirect_to tweets_url }
       format.json { head :no_content }
     end
   end

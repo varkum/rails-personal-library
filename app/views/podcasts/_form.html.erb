@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "add_form", class: "contents" do %>
-<%= form_with(model: podcast, class: "contents") do |form| %>
+<%= form_with(model: podcast, class: "contents", format: :html) do |form| %>
   <% if podcast.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(podcast.errors.count, "error") %> prohibited this podcast from being saved:</h2>

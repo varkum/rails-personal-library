@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
           format.turbo_stream 
-          format.html { redirect_to article_url(@article), notice: "article was successfully updated." }
+          format.html { redirect_to article_url(@article) }
           format.json { render :show, status: :ok, location: @article }
          
         
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "article was successfully deleted." }
+      format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
   end
