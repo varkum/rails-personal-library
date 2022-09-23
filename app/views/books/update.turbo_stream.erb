@@ -1,5 +1,5 @@
 <%= turbo_stream.replace @book do %>
-    <%= render @book %>
+    <%= render @book, sharing: false %>
 <% end %>
 
 <%= turbo_stream.replace "unread_books" do %>
@@ -8,7 +8,7 @@
                 <div class="w-2/3 mx-auto mt-4">
                     <h2 class="font-bold text-2xl">Books</h2>
                 </div>
-                <%= render partial: "books/books", locals: {books: @books} %>
+                <%= render partial: "books/books", locals: {books: @books, sharing: false} %>
             <% end %>
     <% end %>
 <% end %>

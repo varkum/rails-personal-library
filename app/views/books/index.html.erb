@@ -28,7 +28,7 @@
           <% end %>
         </div>
     </div>
-        <%= render partial: "books", locals: {books: @books } %>
+        <%= render partial: "books", locals: {books: @books, sharing: false } %>
 
     <% else %>
       <div class="w-full text-center mt-4">
