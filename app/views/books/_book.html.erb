@@ -11,7 +11,7 @@
           <% end %>
           
             <%= form_with(model: book, class: "py-3 border-t-2 border-gray-300") do |form| %>
-            <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
+              <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
             <% end %>
           
             <%= button_to book_path(book.id, book: {starred: !book.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300", disabled: sharing do %>
