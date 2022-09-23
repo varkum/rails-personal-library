@@ -1,0 +1,7 @@
+<div class="w-full">
+    <div class="flex items-center">
+        <h1 class="font-bold text-4xl m-auto mt-20"><%= @user.name %>'s TV Shows</h1>
+    </div>
+    
+    <%= render partial: "tvshows/tvshows", locals: {tvshows: @tvshows, sharing: true } %>
+</div>

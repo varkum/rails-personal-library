@@ -1,5 +1,5 @@
 <%= turbo_stream.replace @podcast do %>
-    <%= render @podcast %>
+    <%= render @podcast, sharing: false %>
 <% end %>
 
 <%= turbo_stream.replace "unconsumed_podcasts" do %>
@@ -8,7 +8,7 @@
         <div class="w-2/3 mx-auto mt-4">
             <h2 class="font-bold text-2xl">Podcasts</h2>
         </div>
-        <%= render partial: "podcasts/podcasts", locals: {podcasts: @podcasts} %>
+        <%= render partial: "podcasts/podcasts", locals: {podcasts: @podcasts, sharing: false} %>
         <% end %>
     <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 <%= turbo_stream.replace @tvshow do %>
-    <%= render @tvshow %>
+    <%= render @tvshow, sharing: false %>
 <% end %>
 
 <%= turbo_stream.replace "unwatched_tvshows" do %>
@@ -8,7 +8,7 @@
         <div class="w-2/3 mx-auto mt-4">
             <h2 class="font-bold text-2xl">TV Shows</h2>
         </div>
-        <%= render partial: "tvshows/tvshows", locals: {tvshows: @tvshows} %>
+        <%= render partial: "tvshows/tvshows", locals: {tvshows: @tvshows, sharing: false} %>
         <% end %>
     <% end %>
 <% end %>

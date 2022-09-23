@@ -29,7 +29,7 @@
       <% end %>
     </div>
 </div>
-  <%= render partial: "movies", locals: {movies: @movies} %>
+  <%= render partial: "movies", locals: {movies: @movies, sharing: false} %>
 
   <% else %>
       <div class="w-full text-center mt-4">
