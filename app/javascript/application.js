@@ -4,3 +4,4 @@ import "controllers";
 import "@fortawesome/fontawesome-free";
 import "controllers";
 import "@hotwired/turbo-rails";
+import "@popperjs/core";
