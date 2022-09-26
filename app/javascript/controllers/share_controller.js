@@ -9,16 +9,13 @@ export default class extends Controller {
     navigator.clipboard.writeText(shareUrl);
 
     const tooltip = document.querySelector("#tooltip");
-    //const button = document.querySelector("#share-button");
-
-    console.log(tooltip);
-    console.log(this.buttonTarget);
-    //console.log(button);
 
     createPopper(this.buttonTarget, tooltip, {
       placement: "top",
     });
+    tooltip.classList.remove("hidden");
+    setTimeout(() => {
+      tooltip.classList.add("hidden");
+    }, 2000);
   }
-
-  showmsg() {}
 }
