@@ -9,9 +9,11 @@
     
   </div>
 
-  <div class="w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
+  <div class="flex items-center justify-between w-full lg:w-2/3 lg:mx-auto mt-6 lg:mt-10">
     <%= link_to 'Add TV Show', new_tvshow_path, class: "text-center w-36 rounded-lg py-3 px-5 bg-blue-700 text-white block font-medium hover:opacity-70" %>
+    <button class="text-center w-28 rounded-lg py-2 px-3 border-gray-100 block text-sm font-medium hover:opacity-70" data-controller= "share" data-action="click->share#copy" data-share-user-item= "<%= Current.user.id %>/tvshows" data-share-target="button">Share</button>
   </div>
+   <div id="tooltip" class="hidden bg-gray-800 text-white px-4 py-2 rounded text-xs">Copied!</div>
 
   <% if @tvshows.length > 0 %>
     <div class="flex flex-col-reverse lg:flex-row lg:w-2/3 lg:mx-auto mt-6">
