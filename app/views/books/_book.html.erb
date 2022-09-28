@@ -1,12 +1,12 @@
 <%= turbo_frame_tag book, class: "contents" do %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "whitespace-nowrap max-h-16 overflow-x-auto py-3 border-t-2 border-gray-300", disabled: sharing do %>
             <span class="text-xs md:text-sm lg:text-base text-left"><%=book.title%></span>
           <% end %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "pl-3 break-words py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "pl-4 md:pl-0 max-h-16 whitespace-nowrap overflow-x-auto py-3 border-t-2 border-gray-300", disabled: sharing do %>
             <span class="text-xs md:text-sm lg:text-base"><%=book.author%></span>
           <% end %>
           
-            <%= form_with(model: book, class: "pl-4 py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form_with(model: book, class: "pl-4 md:pl-0 py-3 border-t-2 border-gray-300") do |form| %>
               <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
             <% end %>
           
