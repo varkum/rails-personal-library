@@ -1,10 +1,10 @@
 <%= turbo_frame_tag movie, class: "contents" do %>
        
-          <%= button_to movie_path(movie.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= button_to movie_path(movie.id), method: :get, data: {turbo_frame: "_top"}, form_class: " whitespace-nowrap max-h-16 overflow-x-auto py-3 border-t-2 border-gray-300", disabled: sharing do %>
             <span class="text-sm lg:text-base"><%=movie.name%></span>
           <% end %>
         
-            <%= form_with(model: movie, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form_with(model: movie, class: "pl-8 lg:pl-0 py-3 border-t-2 border-gray-300") do |form| %>
             <%= form.check_box :consumed, { value: !movie.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
             <% end %>
           
