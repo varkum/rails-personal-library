@@ -1,24 +1,20 @@
 <%= turbo_frame_tag book, class: "contents" do %>
-       
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=book.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%y")%></span>
+          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words py-3 border-t-2 border-gray-300", disabled: sharing do %>
+            <span class="text-xs md:text-sm lg:text-base text-left"><%=book.title%></span>
           <% end %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=book.title%></span>
-          <% end %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=book.author%></span>
+          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "pl-3 break-words py-3 border-t-2 border-gray-300", disabled: sharing do %>
+            <span class="text-xs md:text-sm lg:text-base"><%=book.author%></span>
           <% end %>
           
-            <%= form_with(model: book, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form_with(model: book, class: "pl-4 py-3 border-t-2 border-gray-300") do |form| %>
               <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
             <% end %>
           
             <%= button_to book_path(book.id, book: {starred: !book.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300", disabled: sharing do %>
               <% if book.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
+                <i class='fa-solid fa-star fa-lg text-yellow-500 ml-4 lg:ml-0'></i>
               <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
+                <i class="fa-regular fa-star fa-lg text-yellow-500 ml-4 lg:ml-0"></i>
               <% end %>
             <% end %>
               
