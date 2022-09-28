@@ -1,9 +1,9 @@
 <%= turbo_frame_tag tvshow, class: "contents" do %>
        
-          <%= button_to tvshow_path(tvshow.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= conditional_link_to !sharing, tvshow_path(tvshow.id), "break-words py-3 border-t-2 border-gray-300" do %>
             <span class="text-sm lg:text-base"><%=tvshow.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= button_to tvshow_path(tvshow.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= conditional_link_to !sharing, tvshow_path(tvshow.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
             <span class="text-sm lg:text-base"><%=tvshow.name%></span>
           <% end %>
         

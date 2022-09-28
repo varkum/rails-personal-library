@@ -1,25 +1,23 @@
   <%= turbo_frame_tag "articles", class: "contents" do %>
   <div id="articles" class="grid grid-cols-6 lg:w-2/3 mt-4 lg:mt-6 lg:mx-auto">
-   
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-base lg:text-xl">Date Added</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-base lg:text-xl">Title</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2"> 
-        <span class="font-bold text-base lg:text-xl">Author</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2"> 
-        <span class="font-bold text-base lg:text-xl">Link</span>
-      </div>
-      <div class="border-t-2 border-gray-300 py-2">
-        <span class="font-bold text-base lg:text-xl">Read?</span>
-      </div>
-     <div class="border-t-2 border-gray-300 py-2">
-        
-      </div>
-        <%= render articles, sharing: sharing %>
+    <div class="border-t-2 border-gray-300 py-2">
+      <span class="font-bold text-sm md:text-base lg:text-xl">Date Added</span>
+    </div>
+    <div class="border-t-2 border-gray-300 py-2">
+      <span class="font-bold text-sm md:text-base lg:text-xl">Title</span>
+    </div>
+    <div class="border-t-2 border-gray-300 py-2"> 
+      <span class="font-bold text-sm md:text-base lg:text-xl">Author</span>
+    </div>
+    <div class="border-t-2 border-gray-300 py-2"> 
+      <span class="font-bold text-sm md:text-base lg:text-xl">Link</span>
+    </div>
+    <div class="border-t-2 border-gray-300 py-2">
+      <span class="font-bold text-sm md:text-base lg:text-xl">Read?</span>
+    </div>
+    <div class="border-t-2 border-gray-300 py-2">  
+    </div>
+    <%= render articles, sharing: sharing %>
     
-      </div>
+</div>
   <% end %>

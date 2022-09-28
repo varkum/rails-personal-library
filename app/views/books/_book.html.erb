@@ -1,24 +1,27 @@
 <%= turbo_frame_tag book, class: "contents" do %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "whitespace-nowrap max-h-16 overflow-x-auto py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-xs md:text-sm lg:text-base text-left"><%=book.title%></span>
+       
+          <%= conditional_link_to !sharing, book_path(book.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-xs md:text-sm lg:text-base"><%=book.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%y")%></span>
           <% end %>
-          <%= button_to book_path(book.id), method: :get, data: {turbo_frame: "_top"}, form_class: "pl-4 md:pl-0 max-h-16 whitespace-nowrap overflow-x-auto py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= conditional_link_to !sharing, book_path(book.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+            <span class="text-xs md:text-sm lg:text-base"><%=book.title%></span>
+          <% end %>
+          <%= conditional_link_to !sharing, book_path(book.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
             <span class="text-xs md:text-sm lg:text-base"><%=book.author%></span>
           <% end %>
           
-            <%= form_with(model: book, class: "pl-4 md:pl-0 py-3 border-t-2 border-gray-300") do |form| %>
-              <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
+            <%= form_with(model: book, class: "py-3 border-t-2 border-gray-300") do |form| %>
+            <%= form.check_box :consumed, { value: !book.consumed, onchange: 'this.form.requestSubmit()' }%>
             <% end %>
           
-            <%= button_to book_path(book.id, book: {starred: !book.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300", disabled: sharing do %>
+            <%= button_to book_path(book.id, book: {starred: !book.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
               <% if book.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500 ml-4 lg:ml-0'></i>
+                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
               <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500 ml-4 lg:ml-0"></i>
+                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
               <% end %>
             <% end %>
               
             
             
 <% end %>
-  

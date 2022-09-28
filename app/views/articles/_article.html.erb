@@ -1,30 +1,25 @@
 <%= turbo_frame_tag article, class: "contents" do %>
-       
-          <%= button_to article_path(article.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-30", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=article.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
-          <% end %>
-          <%= button_to article_path(article.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=article.title%></span>
-          <% end %>
-          <%= button_to article_path(article.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=article.author%></span>
-          <% end %>
-          <%= button_to article.url, method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500", disabled: sharing do %>
-            <span class="text-sm lg:text-base"><%=truncate(article.url, length: 18)%></span>
-          <% end %>
-            <%= form_with(model: article, class: "py-3 border-t-2 border-gray-300") do |form| %>
-              <%= form.check_box :consumed, { value: !article.consumed, onchange: 'this.form.requestSubmit()', disabled: sharing }%>
-            <% end %>
+  <%= conditional_link_to !sharing, article_path(article.id),"break-words pr-3 py-3 border-t-2 border-gray-30" do %>
+    <span class="text-xs md:text-sm lg:text-base"><%=article.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
+  <% end %>
+  <%= conditional_link_to !sharing, article_path(article.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+    <span class="text-xs md:text-sm lg:text-base"><%=truncate(article.title, length: 25)%></span>
+  <% end %>
+  <%= conditional_link_to !sharing, article_path(article.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
+    <span class="text-xs md:text-sm lg:text-base"><%=article.author%></span>
+  <% end %>
+  <%= link_to article.url, target: "_blank", class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
+    <span class="text-xs md:text-sm lg:text-base"><%=truncate(article.url, length: 18)%></span>
+  <% end %>
+  <%= form_with(model: article, class: "py-3 border-t-2 border-gray-300") do |form| %>
+    <%= form.check_box :consumed, { value: !article.consumed, onchange: 'this.form.requestSubmit()' }%>
+  <% end %>
           
-            <%= button_to article_path(article.id, article: {starred: !article.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300", disabled: sharing do %>
-              <% if article.starred %>
-                <i class='fa-solid fa-star fa-lg text-yellow-500'></i>
-              <% else %>
-                <i class="fa-regular fa-star fa-lg text-yellow-500"></i>
-              <% end %>
-            <% end %>
-              
-            
-            
+  <%= button_to article_path(article.id, article: {starred: !article.starred}), method: :patch, form_class: "py-3 border-t-2 border-gray-300" do %>
+    <% if article.starred %>
+      <i class='ml-4 fa-solid fa-star fa-lg text-yellow-500'></i>
+    <% else %>
+      <i class="ml-4 fa-regular fa-star fa-lg text-yellow-500"></i>
+    <% end %>
+  <% end %>       
 <% end %>
-  

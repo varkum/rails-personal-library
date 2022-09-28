@@ -1,15 +1,16 @@
 <%= turbo_frame_tag podcast, class: "contents" do %>
-       
-          <%= button_to podcast_path(podcast.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          
+          <%= conditional_link_to !sharing, podcast_path(podcast.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
             <span class="text-sm lg:text-base"><%=podcast.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y")%></span>
           <% end %>
-          <%= button_to podcast_path(podcast.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          
+          <%= conditional_link_to !sharing, podcast_path(podcast.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
             <span class="text-sm lg:text-base"><%=podcast.name%></span>
           <% end %>
-          <%= button_to podcast_path(podcast.id), method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300", disabled: sharing do %>
+          <%= conditional_link_to !sharing, podcast_path(podcast.id), "break-words pr-3 py-3 border-t-2 border-gray-300" do %>
             <span class="text-sm lg:text-base"><%=podcast.podcast%></span>
           <% end %>
-          <%= button_to podcast.url, method: :get, data: {turbo_frame: "_top"}, form_class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500", disabled: sharing do %>
+          <%= link_to podcast.url, target: "_blank", class: "break-words pr-3 py-3 border-t-2 border-gray-300 underline hover:text-blue-500" do %>
             <span class="text-sm lg:text-base"><%=truncate(podcast.url, length: 18)%></span>
           <% end %>
             <%= form_with(model: podcast, class: "py-3 border-t-2 border-gray-300") do |form| %>
