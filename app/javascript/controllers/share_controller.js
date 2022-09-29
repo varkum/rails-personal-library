@@ -5,7 +5,9 @@ export default class extends Controller {
   static targets = ["button"];
 
   copy() {
-    const shareUrl = `localhost:3000/share/${this.data.get("userItem")}`;
+    const shareUrl = `https://personallibrary.fly.dev//share/${this.data.get(
+      "userItem"
+    )}`;
     navigator.clipboard.writeText(shareUrl);
 
     const tooltip = document.querySelector("#tooltip");
