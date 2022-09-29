@@ -4,14 +4,8 @@ Rails.application.routes.draw do
   get 'share/:user_id/movies', to: "share#movies"
   get 'share/:user_id/tvshows', to: "share#tvshows"
   get 'share/:user_id/podcasts', to: "share#podcasts"
-  get 'share/:user_id/tweets', to: "share#tweets"
 
 
-  resources :tweets do
-    collection do
-      get 'filter'
-    end
-  end
   resources :podcasts do
     collection do
       get 'filter'
