@@ -2,7 +2,7 @@
     <h2 class="text-2xl font-bold my-4">Add New</h2>
     <%= form_with( url: add_path, method: :post, data: {turbo_frame: "add_form"}) do |form| %>
         <%=form.label "Type:" %>
-        <%= form.select :type, ["Article", "Book", "Movie", "TV Show", "Podcast", "Tweet"], {prompt: "Select..."}, {onchange: "this.form.requestSubmit()", class: "rounded"} %>
+        <%= form.select :type, ["Article", "Book", "Movie", "TV Show", "Podcast"], {prompt: "Select..."}, {onchange: "this.form.requestSubmit()", class: "rounded"} %>
     <% end %>
     
     <%= turbo_frame_tag "add_form", class: "contents" do %>

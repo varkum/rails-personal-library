@@ -31,9 +31,6 @@ class ItemsController < ApplicationController
         when "Podcast"
             @podcast = Current.user.podcasts.new
             render partial: "podcasts/form", locals: {podcast: @podcast, viewing: false, source: "new"}
-        when "Tweet"
-            @tweet = Current.user.tweets.new
-            render partial: "tweets/form", locals: {tweet: @tweet, viewing: false, source: "new"}
         end
     end
 end 
